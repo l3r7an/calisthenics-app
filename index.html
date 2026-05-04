@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calisthenics App</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin:0;
+  background:#0c0f0a;
+  color:#c8d4b8;
+  font-family:'Barlow', sans-serif;
+}
+
+.tabs {
+  display:flex;
+  border-bottom:1px solid #2a3022;
+}
+
+.tab {
+  padding:12px;
+  cursor:pointer;
+  color:#6b7560;
+}
+
+.tab.active {
+  color:#d4f53c;
+  border-bottom:2px solid #d4f53c;
+}
+
+.panel {
+  display:none;
+  padding:20px;
+}
+
+.panel.active {
+  display:block;
+}
+
+.day {
+  background:#161a12;
+  margin:10px 0;
+  padding:10px;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.day.open {
+  background:#1e2419;
+}
+</style>
+</head>
+
+<body>
+
+<h1 style="padding:20px;color:#d4f53c;">Your Workout Plan</h1>
+
+<div class="tabs">
+  <div class="tab active" onclick="showTab('one')">Schedule</div>
+  <div class="tab" onclick="showTab('two')">Progress</div>
+</div>
+
+<div id="one" class="panel active">
+  <div class="day" onclick="toggleDay(this)">
+    Monday Workout (tap)
+  </div>
+</div>
+
+<div id="two" class="panel">
+  Progress tracking coming soon
+</div>
+
+<script>
+function showTab(name){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById(name).classList.add('active');
+}
+
+function toggleDay(el){
+  el.classList.toggle('open');
+}
+</script>
+
+</body>
+</html>
