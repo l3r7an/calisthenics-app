@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calisthenics Plan</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin:0;
+  background:#0c0f0a;
+  color:#c8d4b8;
+  font-family:'Barlow', sans-serif;
+}
+
+/* HERO */
+.hero {
+  padding:40px 20px;
+  text-align:center;
+}
+.hero h1 {
+  font-size:40px;
+  color:#eef2e6;
+}
+.hero span {
+  color:#d4f53c;
+}
+
+/* TABS */
+.tabs {
+  display:flex;
+  border-bottom:1px solid #2a3022;
+}
+.tab {
+  flex:1;
+  padding:12px;
+  text-align:center;
+  cursor:pointer;
+  color:#6b7560;
+}
+.tab.active {
+  color:#d4f53c;
+  border-bottom:2px solid #d4f53c;
+}
+
+/* PANELS */
+.panel {
+  display:none;
+  padding:20px;
+}
+.panel.active {
+  display:block;
+}
+
+/* DAY CARDS */
+.day {
+  background:#161a12;
+  margin:10px 0;
+  padding:15px;
+  border-radius:8px;
+  cursor:pointer;
+  transition:0.2s;
+}
+.day:hover {
+  background:#1e2419;
+}
+.day.open {
+  background:#1e2419;
+}
+
+.day-title {
+  font-weight:700;
+  color:#eef2e6;
+}
+
+.day-content {
+  display:none;
+  margin-top:10px;
+  font-size:14px;
+}
+.day.open .day-content {
+  display:block;
+}
+
+/* SIMPLE ANIMATION */
+.fade {
+  animation:fadeUp 0.5s ease;
+}
+@keyframes fadeUp {
+  from {opacity:0; transform:translateY(10px);}
+  to {opacity:1; transform:translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="hero fade">
+  <h1>REACTIVATE <span>YOUR BODY</span></h1>
+  <p>4x per week · Build strength · No excuses</p>
+</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="showTab('schedule', this)">Schedule</div>
+  <div class="tab" onclick="showTab('progress', this)">Progress</div>
+</div>
+
+<div id="schedule" class="panel active fade">
+
+  <div class="day" onclick="toggleDay(this)">
+    <div class="day-title">Monday - Upper Body</div>
+    <div class="day-content">
+      Pull-ups 4x max<br>
+      Push-ups 4x15<br>
+      Plank 3x45s
+    </div>
+  </div>
+
+  <div class="day" onclick="toggleDay(this)">
+    <div class="day-title">Wednesday - Core & Legs</div>
+    <div class="day-content">
+      Squats 4x15<br>
+      Lunges 3x12<br>
+      Leg raises 4x15
+    </div>
+  </div>
+
+  <div class="day" onclick="toggleDay(this)">
+    <div class="day-title">Friday - Full Body</div>
+    <div class="day-content">
+      Pull-ups 4x max<br>
+      Push-ups 4x15<br>
+      Core circuit
+    </div>
+  </div>
+
+</div>
+
+<div id="progress" class="panel fade">
+  <p>Track your reps and improve weekly.</p>
+</div>
+
+<script>
+function showTab(id, el){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+
+  el.classList.add('active');
+  document.getElementById(id).classList.add('active');
+}
+
+function toggleDay(el){
+  el.classList.toggle('open');
+}
+</script>
+
+</body>
+</html>
